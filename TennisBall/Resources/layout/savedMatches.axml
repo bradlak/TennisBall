@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/lightOrange"
+    android:layout_height="match_parent">
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10.0sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/savedMatches"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+    <TextView
+        android:text="No saved matches"
+        android:textStyle="bold"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_height="fill_parent"
+        android:id="@+id/emptyList" />
+</LinearLayout>
