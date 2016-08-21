@@ -33,3 +33,6 @@ It uses:
   <div><b>Saved matches</b></div>
   <img src="https://github.com/bradlak/TennisBall/blob/master/Screenshots/savedmatches.png" align="left" width="200"   >
 </div>
+
+## Credits
+Copyright 2007-2016 Bartosz Radlak.</br> All rights reserved
