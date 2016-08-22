@@ -35,4 +35,4 @@ It uses:
 </div>
 
 ## Credits
-Copyright 2007-2016 Bartosz Radlak.</br> All rights reserved
+Copyright &copy; Bartosz Radlak.</br> All rights reserved
