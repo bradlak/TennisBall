@@ -28,6 +28,7 @@ namespace TennisBall.Infrastructure
 
         public void GoBack()
         {
+
             if (CanGoBack)
             {
                 SetPreviousState();
