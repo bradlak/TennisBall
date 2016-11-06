@@ -1,14 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using TennisBall.Infrastructure;
 
 namespace TennisBall.Logic
@@ -17,6 +9,7 @@ namespace TennisBall.Logic
     public class Match : StatesReminder<Match>
     {
         public Player PlayerOne { get; set; }
+
         public Player PlayerTwo { get; set; }
 
         public List<Set> PlayedSets = new List<Set>();
@@ -31,7 +24,6 @@ namespace TennisBall.Logic
 
             States = new List<Match>();
         }
-
 
         public void AddPoint(PlayerNumber number)
         {
@@ -108,8 +100,8 @@ namespace TennisBall.Logic
 
             int nr = PlayedSets.Max(z => (int?)z.Number) ?? 0;
 
-            string p1games = player.IsTieBreak ? String.Format("{0}({1})",PlayerOne.Games.ToString(), PlayerOne.GamePoints.ToString())  : PlayerOne.Games.ToString();
-            string p2games = opponent.IsTieBreak ? String.Format("{0}({1})", PlayerTwo.Games.ToString(), PlayerTwo.GamePoints.ToString()) : PlayerTwo.Games.ToString();
+            string p1games = player.IsTieBreak ? string.Format("{0}({1})",PlayerOne.Games.ToString(), PlayerOne.GamePoints.ToString())  : PlayerOne.Games.ToString();
+            string p2games = opponent.IsTieBreak ? string.Format("{0}({1})", PlayerTwo.Games.ToString(), PlayerTwo.GamePoints.ToString()) : PlayerTwo.Games.ToString();
 
             PlayedSets.Add(new Set() {Winner = player.StartNumber, Loser = opponent.StartNumber, Player1Games = p1games, Player2Games = p2games, Number = nr+1, Player1Name = PlayerOne.Name,Player2Name = PlayerTwo.Name});
 
@@ -118,7 +110,6 @@ namespace TennisBall.Logic
             player.IsTieBreak = false;
             opponent.IsTieBreak = false;
         }
-
 
         public string GetWinner()
         {
@@ -173,7 +164,8 @@ namespace TennisBall.Logic
                 return States.SingleOrDefault(z => z.StateId == StateId - 1) != null;
             }
         }
-        protected override void SetPreviousState()
+
+        public override void SetPreviousState()
         {
             Match previousState = States.SingleOrDefault(z => z.StateId == StateId - 1);
             var tempState = ObjectCloner.Clone<Match>(previousState);
@@ -191,7 +183,7 @@ namespace TennisBall.Logic
             }
         }
 
-        protected override void SetNextState()
+        public override void SetNextState()
         {
             Match nextState = States.SingleOrDefault(z => z.StateId == StateId + 1);
             var tempState = ObjectCloner.Clone<Match>(nextState);

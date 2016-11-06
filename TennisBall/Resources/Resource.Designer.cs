@@ -1850,8 +1850,8 @@ namespace TennisBall
 			// aapt resource value: 0x7f020050
 			public const int newMatch = 2130837584;
 			
-			// aapt resource value: 0x7f02005a
-			public const int notification_template_icon_bg = 2130837594;
+			// aapt resource value: 0x7f020059
+			public const int notification_template_icon_bg = 2130837593;
 			
 			// aapt resource value: 0x7f020051
 			public const int redo = 2130837585;
@@ -1866,19 +1866,16 @@ namespace TennisBall
 			public const int savedMatches = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int settings = 2130837589;
+			public const int tennisBall = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int tennisBall = 2130837590;
+			public const int undo = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int undo = 2130837591;
+			public const int undoDisabled = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int undoDisabled = 2130837592;
-			
-			// aapt resource value: 0x7f020059
-			public const int user = 2130837593;
+			public const int user = 2130837592;
 			
 			static Drawable()
 			{
@@ -1940,9 +1937,6 @@ namespace TennisBall
 			
 			// aapt resource value: 0x7f06003c
 			public const int action_mode_close_button = 2131099708;
-			
-			// aapt resource value: 0x7f0600ae
-			public const int action_settings = 2131099822;
 			
 			// aapt resource value: 0x7f06003d
 			public const int activity_chooser_view_content = 2131099709;
@@ -2148,14 +2142,14 @@ namespace TennisBall
 			// aapt resource value: 0x7f0600a2
 			public const int media_actions = 2131099810;
 			
-			// aapt resource value: 0x7f0600b0
-			public const int menu_redo = 2131099824;
-			
-			// aapt resource value: 0x7f0600b1
-			public const int menu_save = 2131099825;
-			
 			// aapt resource value: 0x7f0600af
-			public const int menu_undo = 2131099823;
+			public const int menu_redo = 2131099823;
+			
+			// aapt resource value: 0x7f0600b0
+			public const int menu_save = 2131099824;
+			
+			// aapt resource value: 0x7f0600ae
+			public const int menu_undo = 2131099822;
 			
 			// aapt resource value: 0x7f06001d
 			public const int middle = 2131099677;
@@ -2172,11 +2166,11 @@ namespace TennisBall
 			// aapt resource value: 0x7f06008b
 			public const int namep2 = 2131099787;
 			
-			// aapt resource value: 0x7f0600b2
-			public const int nav_new_match = 2131099826;
+			// aapt resource value: 0x7f0600b1
+			public const int nav_new_match = 2131099825;
 			
-			// aapt resource value: 0x7f0600b3
-			public const int nav_saved = 2131099827;
+			// aapt resource value: 0x7f0600b2
+			public const int nav_saved = 2131099826;
 			
 			// aapt resource value: 0x7f060076
 			public const int nav_view = 2131099766;
@@ -2665,13 +2659,10 @@ namespace TennisBall
 		{
 			
 			// aapt resource value: 0x7f0c0000
-			public const int action_menu = 2131492864;
+			public const int match_menu = 2131492864;
 			
 			// aapt resource value: 0x7f0c0001
-			public const int match_menu = 2131492865;
-			
-			// aapt resource value: 0x7f0c0002
-			public const int navmenu = 2131492866;
+			public const int navmenu = 2131492865;
 			
 			static Menu()
 			{

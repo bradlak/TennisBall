@@ -55,7 +55,7 @@ namespace TennisBall.Fragments
 
         private void Player2Server_Click(object sender, EventArgs e)
         {
-             ImageButton butt = sender as ImageButton;
+            ImageButton butt = sender as ImageButton;
             butt.SetImageDrawable(ballIcon);
             player1Server.SetImageDrawable(null);
             server = PlayerNumber.Two;
@@ -63,8 +63,8 @@ namespace TennisBall.Fragments
 
         private void NewMatchFragment_Click(object sender, EventArgs e)
         {
-            string name1 = String.IsNullOrEmpty(player1Name.Text) ? "Player 1" : player1Name.Text;
-            string name2 = String.IsNullOrEmpty(player2Name.Text) ? "Player 2" : player2Name.Text;
+            string name1 = string.IsNullOrEmpty(player1Name.Text) ? "Player 1" : player1Name.Text;
+            string name2 = string.IsNullOrEmpty(player2Name.Text) ? "Player 2" : player2Name.Text;
             var act = (MainActivity)Activity;
             
             var imm = (InputMethodManager)Context.GetSystemService(Context.InputMethodService);

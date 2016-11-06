@@ -1,5 +1,4 @@
-﻿using Android.Views;
-using Android.Widget;
+﻿using Android.Widget;
 using Android.OS;
 using TennisBall.Entites;
 using Android.Support.V7.App;
@@ -16,11 +15,11 @@ using System.Collections.Generic;
 
 namespace TennisBall
 {
-    [Activity(Label = "TennisBall", MainLauncher = true, Icon = "@drawable/tennisBall",ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label="TennisBall", Icon = "@drawable/tennisBall",MainLauncher = true,ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
-        IMatchesRepository repository;
-        DrawerLayout drawerLayout;
+        private DrawerLayout drawerLayout;
+
         public bool MatchStarted = false;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -28,14 +27,11 @@ namespace TennisBall
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
 
-            TinyIoCContainer.Current.Register<IDatabaseManager, DatabaseManager>();
-            TinyIoCContainer.Current.Register<IMatchesRepository, MatchesRepository>();
-            TinyIoCContainer.Current.AutoRegister(z => z.BaseType == typeof(Fragment));
+            Bootstrapper.Initialize();
 
             IDatabaseManager mgr = TinyIoCContainer.Current.Resolve<IDatabaseManager>();
             mgr.CreateDatabaseIfNotExist();
             mgr.CreateTable<SavedMatch>();
-            repository = TinyIoCContainer.Current.Resolve<IMatchesRepository>();
 
             var toolbar = FindViewById<V7Toolbar>(Resource.Id.app_bar);
             SetSupportActionBar(toolbar);
@@ -56,8 +52,26 @@ namespace TennisBall
 
         protected override void OnResume()
         {
-            SupportActionBar.SetTitle(Resource.String.ApplicationName);
+            //SupportActionBar.SetTitle(Resource.String.ApplicationName);
             base.OnResume();
+        }
+
+        public void StartNewMatch(string player1Name, string player2Name, PlayerNumber server)
+        {
+            var parameters = new Dictionary<string, object>()
+                    { { "player1Name",player1Name },
+                      { "player2Name",player2Name },
+                      { "server"     ,server } };
+
+            ChangeFragmentWithParameters<MatchFragment>(parameters);
+            MatchStarted = true;
+        }
+
+        public void MatchSaved()
+        {
+            ChangeFragment<SavedMatchesFragment>();
+            MatchStarted = false;
+            Toast.MakeText(this, Resource.String.SavedMatch, ToastLength.Short).Show();
         }
 
         private void ChangeFragment<T>() where T : Fragment
@@ -76,7 +90,6 @@ namespace TennisBall
             ft.Add(Resource.Id.AppScreen, fragment);
             ft.Commit();
         }
-
 
         private void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
@@ -107,50 +120,6 @@ namespace TennisBall
             }
             drawerLayout.CloseDrawers();
         }
-
-        public void StartNewMatch(string player1Name, string player2Name, PlayerNumber server)
-        {
-           var parameters = new Dictionary<string, object>()
-                    { { "player1Name",player1Name },
-                      { "player2Name",player2Name },
-                      { "server"     ,server } };
-
-            ChangeFragmentWithParameters<MatchFragment>(parameters);
-            MatchStarted = true;
-        }
-
-        public void MatchSaved()
-        {
-            Toast.MakeText(this, Resource.String.SavedMatch, ToastLength.Short).Show();
-            ChangeFragment<SavedMatchesFragment>();
-            MatchStarted = false;
-        }
-
-        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.action_menu, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-       
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Resource.Id.action_settings:
-                    Toast.MakeText(this, Resource.String.NotAvailiable, ToastLength.Short).Show();
-                    return true;
-                default:
-                    return base.OnOptionsItemSelected(item);
-            }
-        }
-
-        public override void OnBackPressed()
-        {
-            
-        }
-
-
     }
 }
 

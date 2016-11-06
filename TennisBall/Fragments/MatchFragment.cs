@@ -14,25 +14,26 @@ namespace TennisBall.Fragments
 {
     public class MatchFragment : Fragment
     {
-        Match match;
-        Toolbar toolbar;
-        IMenuItem redo;
-        IMenuItem undo;
-        IMenuItem save;
-        TextView p1Server;
-        TextView p2Server;
+        private Toolbar toolbar;
+        private IMenuItem redo;
+        private IMenuItem undo;
+        private IMenuItem save;
+        private TextView p1Server;
+        private TextView p2Server;
 
-        List<TextView> GamesViews;
+        private List<TextView> GamesViews;
 
-        TextView p1PointsView;
-        TextView p2PointsView;
+        private TextView p1PointsView;
+        private TextView p2PointsView;
 
-        Button addPoint1;
-        Button addPoint2;
+        private Button addPoint1;
+        private Button addPoint2;
 
-        TextView winner;
-        TextView winnerNameTV;
-        IMatchesRepository repository;
+        private TextView winner;
+        private TextView winnerNameTV;
+
+        private Match match;
+        private IMatchesRepository repository;
 
         public MatchFragment(string player1Name, string player2Name, PlayerNumber server, IMatchesRepository repo)
         {

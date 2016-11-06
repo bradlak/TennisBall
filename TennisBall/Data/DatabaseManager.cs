@@ -1,13 +1,5 @@
+using SQLite;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using System.IO;
 using TennisBall.Entites;
 
@@ -24,35 +16,25 @@ namespace TennisBall.Data
 
         public bool CreateDatabaseIfNotExist()
         {
-            try
+            using (var connection = new SQLiteConnection(path))
             {
-                var connection = new SQLite.SQLiteConnection(path);
                 return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
             }
         }
 
         public bool CreateTable<T>() where T : BaseEntity
         {
-            try
+            using (var connection = new SQLiteConnection(path))
             {
-                var connection = new SQLite.SQLiteConnection(path);
                 connection.CreateTable<T>();
-                return true;
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+
+            return true;
         }
 
-
-        public SQLite.SQLiteConnection GetConnection()
+        public SQLiteConnection GetConnection()
         {
-            return new SQLite.SQLiteConnection(path);
+            return new SQLiteConnection(path);
         }
     }
 }

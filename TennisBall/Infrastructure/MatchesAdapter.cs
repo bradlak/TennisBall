@@ -1,16 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using TennisBall.Entites;
-using TennisBall.Data;
 using Android.Graphics;
 
 namespace TennisBall.Infrastructure
@@ -66,7 +59,6 @@ namespace TennisBall.Infrastructure
 
             if (singleData.WinnerName == singleData.Player1Name) view.FindViewById<TextView>(Resource.Id.p1Name).SetTypeface(Typeface.DefaultBold, TypefaceStyle.Bold);
             else view.FindViewById<TextView>(Resource.Id.p2Name).SetTypeface(Typeface.DefaultBold, TypefaceStyle.Bold);
-
 
             return view;
         }

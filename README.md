@@ -7,8 +7,9 @@ It uses:
 
 * Xamarin.Android 
 * SQLite device database
-* my own StatesReminder mechanism
+* StatesReminder mechanism
 * NUnit framework
+* TinyIoC container
 * Android support library v4/v7
 
 </br>

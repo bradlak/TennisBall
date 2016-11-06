@@ -12,17 +12,13 @@ namespace TennisBall.Fragments
 {
     public class SavedMatchesFragment : Fragment, IOnItemLongClickListener
     {
-        ListView matchesList;
-        IMatchesRepository repository;
+        private ListView matchesList;
+
+        private IMatchesRepository repository;
 
         public SavedMatchesFragment(IMatchesRepository repo)
         {
             this.repository = repo;
-        }
-
-        public override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -49,9 +45,7 @@ namespace TennisBall.Fragments
                 FillList();
             });
 
-            alert.SetNegativeButton("Cancel", (senderAlert, args) => {
-
-            });
+            alert.SetNegativeButton("Cancel", (senderAlert, args) => {});
 
             Dialog dialog = alert.Create();
             dialog.Show();
