@@ -42,11 +42,6 @@ namespace TennisBall.Fragments
             repository = repo;
         }
 
-        public override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-        }
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.match, container, false);
@@ -115,7 +110,7 @@ namespace TennisBall.Fragments
         {
             string winnerName = match.GetWinner();
 
-            if (!String.IsNullOrEmpty(winnerName))
+            if (!string.IsNullOrEmpty(winnerName))
             {
                 save.SetVisible(true);
                 UndoEnabled = false;
