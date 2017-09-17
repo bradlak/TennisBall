@@ -15,7 +15,7 @@ using System.Collections.Generic;
 
 namespace TennisBall
 {
-    [Activity(Label="TennisBall", Icon = "@drawable/tennisBall",MainLauncher = true,ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label="Tennis Scorer", Icon = "@drawable/tennisBall",MainLauncher = true,ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
         private DrawerLayout drawerLayout;
@@ -36,24 +36,18 @@ namespace TennisBall
             var toolbar = FindViewById<V7Toolbar>(Resource.Id.app_bar);
             SetSupportActionBar(toolbar);
             SupportActionBar.SetTitle(Resource.String.ApplicationName);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(false);
-            SupportActionBar.SetDisplayShowHomeEnabled(false);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetDisplayShowHomeEnabled(true);
 
             var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
 
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.OpenDrawer, Resource.String.CloseDrawer);
-            drawerLayout.SetDrawerListener(drawerToggle);
+            drawerLayout.AddDrawerListener(drawerToggle);
             drawerToggle.SyncState();
 
             ChangeFragment<SavedMatchesFragment>();
-        }
-
-        protected override void OnResume()
-        {
-            //SupportActionBar.SetTitle(Resource.String.ApplicationName);
-            base.OnResume();
         }
 
         public void StartNewMatch(string player1Name, string player2Name, PlayerNumber server)

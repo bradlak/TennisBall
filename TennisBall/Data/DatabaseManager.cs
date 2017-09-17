@@ -2,6 +2,10 @@ using SQLite;
 using System;
 using System.IO;
 using TennisBall.Entites;
+using Mono.Data.Sqlite;
+using SQLite.Net;
+using SQLite.Net.Platform.XamarinAndroid;
+using SQLite.Net.Interop;
 
 namespace TennisBall.Data
 {
@@ -16,7 +20,7 @@ namespace TennisBall.Data
 
         public bool CreateDatabaseIfNotExist()
         {
-            using (var connection = new SQLiteConnection(path))
+            using (var connection = new SqliteConnection(path))
             {
                 return true;
             }
@@ -24,17 +28,27 @@ namespace TennisBall.Data
 
         public bool CreateTable<T>() where T : BaseEntity
         {
-            using (var connection = new SQLiteConnection(path))
+            using (var connection = new SQLiteConnection(GetPlatform(),path))
             {
                 connection.CreateTable<T>();
             }
-
             return true;
         }
 
         public SQLiteConnection GetConnection()
         {
-            return new SQLiteConnection(path);
+            return new SQLiteConnection(GetPlatform(), path);
+        }
+
+
+        private ISQLitePlatform GetPlatform()
+        {
+            if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.N)
+			{
+                return new SQLitePlatformAndroidN();
+			}
+
+            return new SQLitePlatformAndroid();
         }
     }
 }

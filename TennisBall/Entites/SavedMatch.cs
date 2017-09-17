@@ -2,7 +2,7 @@ using SQLite;
 
 namespace TennisBall.Entites
 {
-    [Table("SavedMatches")]
+    [SQLite.Net.Attributes.Table("SavedMatches")]
     public class SavedMatch : BaseEntity
     {
         public string Player1Sets { get; set; }

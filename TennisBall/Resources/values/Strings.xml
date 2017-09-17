@@ -3,7 +3,7 @@
     <string name="ApplicationName">TennisBall</string>
   <string name="OpenDrawer">Open</string>
   <string name="CloseDrawer">Close</string>
-  <string name="AppInfo">Simple score keeper by Bartosz R.</string>
+  <string name="AppInfo">Simple score keeper</string>
   <string name="Confirmation">Confirmation</string>
   <string name="NotFinishedMatchQuestion">"Current match is not finished. Do you want to start new one?"</string>
   <string name="SavedMatch">Match saved</string>
